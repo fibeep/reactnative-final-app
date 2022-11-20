@@ -6,7 +6,6 @@ import {useEffect, useState} from 'react'
 
 function Dogs() {
 
-      const [isLoading, setLoading] = useState(true);
       const [data, setData] = useState([]);
 
     async function getDog() {
