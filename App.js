@@ -7,6 +7,8 @@ import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./Settings";
 
 const Tab = createBottomTabNavigator();
+const No = 'no'
+
 
 export default function App() {
   return (
