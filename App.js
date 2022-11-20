@@ -5,9 +5,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "react-native-vector-icons";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./Settings";
+import Dogs from "./Dogs";
+
 
 const Tab = createBottomTabNavigator();
-const No = 'no'
+
 
 
 export default function App() {
@@ -22,8 +24,10 @@ export default function App() {
               iconName = focused
                 ? "ios-information-circle"
                 : "ios-information-circle-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "ios-list" : "ios-list";
+            } else if (route.name === "Weather") {
+              iconName = focused ? "partly-sunny" : "partly-sunny-outline";
+            } else if (route.name === "Hatch a Pet") {
+              iconName = focused ? "egg" : "egg-outline";
             }
 
             // You can return any component that you like here!
@@ -33,8 +37,9 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
+        <Tab.Screen name="Weather" component={SettingsScreen} />
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Hatch a Pet" component={Dogs} />
       </Tab.Navigator>
     </NavigationContainer>
   );
