@@ -23,7 +23,7 @@ let data = memesData.filter(item => item.name.includes(search))
           <ScrollView>
 
             {data.map((meme) => (
-              <View key={meme.key}>
+              <View key={meme.id}>
                 <Image
                   style={{ width: meme.width / 3, height: meme.height / 3 }}
                   source={{ uri: meme.url }}
