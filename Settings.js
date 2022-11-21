@@ -49,9 +49,9 @@ function SettingsScreen() {
     }
     return (
       <View>
-        <Text>{temp}</Text>
+        <Text>Temperature: {temp}</Text>
         <Text>Feels Like: {feelsLike}</Text>
-        <Text>{desc}</Text>
+        <Text>Description: {desc}</Text>
       </View>
     );
   }
@@ -68,10 +68,10 @@ function SettingsScreen() {
         value={zip}
       />
       <Button
+        style={styles.buttons}
         onPress={fetchWeather}
         title="Get Weather"
         color="#841584"
-        accessibilityLabel="Learn more about this purple button"
       />
     </View>
   );
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     margin: 30,
-  },
+  }
 });
 
 

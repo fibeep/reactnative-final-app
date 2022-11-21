@@ -6,7 +6,10 @@ import {useEffect, useState} from 'react'
 
 function Dogs() {
 
-      const [data, setData] = useState([]);
+      const [
+        data,
+        setData,
+      ] = useState()
 
     async function getDog() {
         const path = "https://dog.ceo/api/breeds/image/random";
