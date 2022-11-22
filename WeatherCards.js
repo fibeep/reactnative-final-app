@@ -22,6 +22,7 @@ function WeatherCards() {
     const temp = json.main.temp;
     const feelsLike = json.main.feels_like;
     const desc = json.weather[0].description;
+    const icon = json.weather[0].icon
 
     console.log(zip);
 
@@ -31,12 +32,13 @@ function WeatherCards() {
       temp,
       feelsLike,
       desc,
+      icon
     });
   }
   // -----------------------------------
 
   function WeatherDisplay(props) {
-    const { temp, feelsLike, desc, cod, message } = props;
+    const { temp, feelsLike, desc, cod, message, icon } = props;
 
     if (cod !== 200) {
       return <Text>{message}</Text>;
@@ -49,7 +51,15 @@ function WeatherCards() {
         <Text style={styles.fonts} h3>
           Feels Like: {feelsLike}
         </Text>
-        <Text style={styles.fonts} h4>Description: {desc}</Text>
+        <Text style={styles.fonts} h4>
+          Description: {desc}
+        </Text>
+        <Card.Image
+          style={{ width:100, height: 100 }}
+          source={{
+            uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
+          }}
+        />
       </View>
     );
   }
