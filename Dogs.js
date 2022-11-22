@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Text, View, Image, Button } from "react-native";
+import {  View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {useEffect, useState} from 'react'
+import { Text, Card, Button, Icon } from "@rneui/themed";
 
 function Dogs() {
 
@@ -22,15 +23,27 @@ function Dogs() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      
-      <Image 
-      style={{width: 300, height: 300}}
-      source={{uri:data}}
-      />
-    
-    <Button 
-    title="Get Dog"
-    onPress={getDog} />
+      <Card>
+        <Card.Title>Random Pet</Card.Title>
+        <Card.Divider />
+        <Card.Image
+          style={{ padding: 0, width: 300, height: 300 }}
+          source={{ uri: data }}
+        />
+        <Button
+          icon={
+            <Icon name="code" color="#ffffff" iconStyle={{ marginRight: 10 }} />
+          }
+          buttonStyle={{
+            borderRadius: 0,
+            marginLeft: 0,
+            marginRight: 0,
+            marginBottom: 0,
+          }}
+          title="Get Dog"
+          onPress={getDog}
+        />
+      </Card>
     </View>
   );
 }

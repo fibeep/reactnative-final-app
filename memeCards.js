@@ -30,11 +30,11 @@ function MemeCards() {
         <View style={styles.listContainer}>
           <ScrollView>
             {data.map((meme) => (
-              <Card key={meme.id}>
+              <Card key={meme.id} style="card">
                 <Card.Title>{meme.name}</Card.Title>
                 <Card.Divider />
                 <Card.Image
-                  style={{ width: meme.width / 3, height: meme.height / 3 }}
+                  style={{ width: meme.width / 3, height: meme.height / 3, }}
                   source={{
                     uri: meme.url,
                   }}
