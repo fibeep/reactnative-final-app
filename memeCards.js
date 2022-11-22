@@ -1,17 +1,25 @@
 import * as React from "react";
-import { Image, Text, View, StyleSheet, FlatList, SafeAreaView, KeyboardAvoidingView, StatusBar, TextInput, ScrollView } from "react-native";
+import {
+  Image,
+  View,
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  StatusBar,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useEffect, useState } from "react";
 import memesData from "./memes";
+import { Text, Card, Button, Icon } from "@rneui/themed";
 
+function MemeCards() {
+  const [search, setSearch] = useState("");
 
-
-function HomeScreen() {
-
-const [search, setSearch] = useState("");
-const renderItem = ({ item }) => <Item title={item.title} />;
-let data = memesData.filter(item => item.name.includes(search))
+  let data = memesData.filter((item) => item.name.includes(search));
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -21,15 +29,17 @@ let data = memesData.filter(item => item.name.includes(search))
         <StatusBar style="auto" />
         <View style={styles.listContainer}>
           <ScrollView>
-
             {data.map((meme) => (
-              <View key={meme.id}>
-                <Image
+              <Card key={meme.id}>
+                <Card.Title>{meme.name}</Card.Title>
+                <Card.Divider />
+                <Card.Image
                   style={{ width: meme.width / 3, height: meme.height / 3 }}
-                  source={{ uri: meme.url }}
+                  source={{
+                    uri: meme.url,
+                  }}
                 />
-                <Text style={styles.item}>{meme.name}</Text>
-              </View>
+              </Card>
             ))}
           </ScrollView>
         </View>
@@ -44,8 +54,7 @@ let data = memesData.filter(item => item.name.includes(search))
   );
 }
 
-export default HomeScreen
-
+export default MemeCards;
 
 const styles = StyleSheet.create({
   listContainer: {

@@ -1,14 +1,9 @@
 import * as React from "react";
-import { Text, View, StyleSheet, TextInput, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {  View, StyleSheet, TextInput } from "react-native";
 import { useEffect, useState, useRef } from "react";
-
-function SettingsScreen() {
-
-
+import { Text, Card, Button, Icon } from "@rneui/themed";
+function WeatherCards() {
   const [zip, setZip] = useState("33180");
-  const [unit, setUnit] = useState("metric");
   const [data, setData] = useState(null);
 
   // -----------------------------------
@@ -28,7 +23,7 @@ function SettingsScreen() {
     const feelsLike = json.main.feels_like;
     const desc = json.weather[0].description;
 
-    console.log(zip)
+    console.log(zip);
 
     setData({
       cod,
@@ -40,7 +35,6 @@ function SettingsScreen() {
   }
   // -----------------------------------
 
-
   function WeatherDisplay(props) {
     const { temp, feelsLike, desc, cod, message } = props;
 
@@ -49,30 +43,37 @@ function SettingsScreen() {
     }
     return (
       <View>
-        <Text>Temperature: {temp}</Text>
-        <Text>Feels Like: {feelsLike}</Text>
-        <Text>Description: {desc}</Text>
+        <Text style={styles.fonts} h2>
+          Temperature: {temp}
+        </Text>
+        <Text style={styles.fonts} h3>
+          Feels Like: {feelsLike}
+        </Text>
+        <Text style={styles.fonts} h4>Description: {desc}</Text>
       </View>
     );
   }
 
-
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Weather!</Text>
-      {data && <WeatherDisplay {...data} />}
-      <TextInput
-        style={styles.search}
-        placeholder="Enter Zip Code"
-        onChangeText={setZip}
-        value={zip}
-      />
-      <Button
-        style={styles.buttons}
-        onPress={fetchWeather}
-        title="Get Weather"
-        color="#841584"
-      />
+    
+      <Card containerStyle={{ marginTop: 15 }}>
+        <Card.Title>Weather</Card.Title>
+        <Card.Divider />
+        {data && <WeatherDisplay {...data} />}
+        <TextInput
+          style={styles.search}
+          placeholder="Enter Zip Code"
+          onChangeText={setZip}
+          value={zip}
+        />
+        <Button
+          style={styles.buttons}
+          onPress={fetchWeather}
+          title="Get Weather"
+          color="#841584"
+        />
+      </Card>
     </View>
   );
 }
@@ -102,8 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     margin: 30,
-  }
+  },
 });
 
-
-export default SettingsScreen
+export default WeatherCards;

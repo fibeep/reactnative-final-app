@@ -3,11 +3,9 @@ import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "react-native-vector-icons";
-import HomeScreen from "./HomeScreen";
-import SettingsScreen from "./Settings";
 import Dogs from "./Dogs";
-
-
+import WeatherCards from "./WeatherCards";
+import MemeCards from "./memeCards";
 const Tab = createBottomTabNavigator();
 
 
@@ -20,7 +18,7 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Home") {
+            if (route.name === "Memes") {
               iconName = focused
                 ? "ios-information-circle"
                 : "ios-information-circle-outline";
@@ -37,8 +35,8 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Weather" component={SettingsScreen} />
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Weather" component={WeatherCards} />
+        <Tab.Screen name="Memes" component={MemeCards} />
         <Tab.Screen name="Hatch a Pet" component={Dogs} />
       </Tab.Navigator>
     </NavigationContainer>
